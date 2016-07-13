@@ -1,0 +1,18 @@
+---
+- name: download latest version of wordPress
+  get_url: url=http://wordpress.org/wordpress-latest.tar.gz dest=/var/tmp/wordpress-latest.tar.gz
+
+- name: extract wordpress
+  unarchive: src=/var/tmp/wordpress-latest.tar.gz dest=/var/www/html copy=no
+
+- name: copy wordpress config 
+  template: src=wp-config.php dest=/var/www/html/wordpress/
+
+- name: add group "wordpress"
+  group: name=wordpress
+
+- name: add user "wordpress"
+  user: name=wordpress group=wordpress home=/var/www/html/wordpress
+
+- name: change ownership of wordpress installation
+  file: path=/var/www/html/wordpress owner=wordpress group=wordpress state=directory recurse=yes

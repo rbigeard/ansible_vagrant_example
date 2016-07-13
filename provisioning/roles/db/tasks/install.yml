@@ -1,0 +1,8 @@
+- name: install all packages relevant to the db part of a lamp stack
+  apt: name={{ item }} state=present update_cache=yes
+  with_items:
+  - mysql-server
+  - python-mysqldb
+
+- name: make sure mysql is activated on boot
+  service: name=mysql state=started enabled=yes

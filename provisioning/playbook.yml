@@ -1,4 +1,11 @@
 ---
 - hosts: all
+  vars:
+    db_name: test
+    db_password: test
+    db_user: test
   roles:
     - common
+    - db
+    - webserver
+    - wordpress
