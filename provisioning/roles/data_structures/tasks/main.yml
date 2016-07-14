@@ -1,4 +1,17 @@
 ---
 - name: display hash
   debug: 
-    msg: "{{ fruits }}"
+    msg: "{{ item }}"
+  with_items: "{{ directories }}"
+  tags: data_structures
+
+- name: creating directory structure
+  file:
+    name: "/opt/{{ item }}"
+    state: directory 
+    mode: 0755
+    owner: vagrant
+    group: vagrant
+  with_items: "{{ directories }}"
+  tags: data_structures
+  

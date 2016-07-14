@@ -147,6 +147,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     ansible.playbook = "provisioning/playbook.yml"
     ansible.verbose = "vvvv"
     ansible.sudo = true
+#    ansible.tags = "data_structures"
 #    ansible.sudo_user = 'vagrant'
   end
 end
