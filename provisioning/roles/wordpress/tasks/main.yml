@@ -5,6 +5,9 @@
 - name: extract wordpress
   unarchive: src=/var/tmp/wordpress-latest.tar.gz dest=/var/www/html copy=no
 
+- name: copy wordpress config 
+  template: src=wp-config.php dest=/var/www/html/wordpress/
+
 - name: add group "wordpress"
   group: name=wordpress
 
